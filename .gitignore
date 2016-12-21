@@ -1,7 +1,13 @@
+# Python
+
+*.pyc
+
 # Linux Specific
+
 *~
 
 # Misc.
+
 *.pdf
 *.odt
 *.doc
