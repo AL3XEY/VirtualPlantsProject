@@ -410,12 +410,12 @@ class GMap:
 			for dart in self.orderedorbit(facedart,[0,1]):
 				if self.alpha(0, dart) != lastdart:
 					positions.append(self.get_position(dart))
-					lastdart = dart
-				if color is None:
-					mat = Material((randint(0,255),randint(0,255),randint(0,255)),transparency=transparency)
-				else:
-					mat = Material(tuple(color),diffuse=0.25,transparency=transparency)
-				s.add(Shape(FaceSet(positions, [range(len(positions))]) , mat, facedart ))
+				lastdart = dart
+			if color is None:
+				mat = Material((randint(0,255),randint(0,255),randint(0,255)),transparency=transparency)
+			else:
+				mat = Material(tuple(color),diffuse=0.25,transparency=transparency)
+			s.add(Shape(FaceSet(positions, [range(len(positions))]) , mat, facedart ))
 		if add : 
 			Viewer.add(s)
 		else : 

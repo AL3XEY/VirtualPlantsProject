@@ -1,9 +1,23 @@
 # coding: utf8
 from openalea import *
 from gmap import *
+from gmap_optimization import *
 from gmap_tools import *
 from array_dict import *
 from basicshapes import *
+
+def add_square(gmap):
+	darts = [gmap.add_dart() for i in xrange(8)]
+	for i in xrange(4):
+		gmap.link_darts(0, darts[2*i], darts[2*i+1])
+	for i in xrange(4):
+		gmap.link_darts(1, darts[2*i+1], darts[(2*i+2) % 8])
+	return darts
+ 
+def square():
+	gmap = GMap()
+	add_square(gmap)
+	return gmap
 
 def cube(xsize = 5, ysize  = 5 , zsize = 5):
 	g = GMap()
@@ -118,6 +132,10 @@ def holeshape(xsize = 5, ysize = 5, zsize = 5, internalratio = 0.5):
 		sqid, dartid = darti
 		dart = squares[sqid][dartid]
 		g.set_position(dart, position)
+		
+	return g
  
 #TODO
-
+g = square()
+g.display()
+#mesh_display(points, triangles)
